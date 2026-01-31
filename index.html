@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>哈利波特介绍网站</title>
+</head>
+<style>
+    
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .rotate {
+        animation: rotate 3s linear infinite;
+    }
+    body{
+        background-image: url(./pictures/background-image.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    .click-audio{
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        top: 7px;
+        left: 0.5%;
+        border-radius: 50%;
+        transition: transform 0.5s;
+        cursor: pointer;
+        object-fit: cover;
+    }
+    .title{
+        position: fixed;
+        background-image: linear-gradient(to bottom, #00000080, transparent);
+        height: 50px;
+        width: 95%;
+        border-radius: 25px;
+    }
+    
+      
+    
+    .myself{
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        top: 7px;
+        right: 1%;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        cursor: default;
+        z-index: 10;
+    }
+    .myself:hover {
+            transform: translate(0px,10px) scale(1.5);
+        ;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+    .myself-click {
+           
+            position: fixed;
+            right: 20px;
+            top: 60px;
+            padding-top:30px ;
+            background-color: white;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-bottom: 12px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            
+        }
+    .myself:hover + .myself-click,
+       
+        .myself-click:hover {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        
+        .myself-click a {
+            display: block; 
+            margin: 8px 0; 
+            text-decoration: none; 
+            color: #333; 
+            padding: 4px 16px; 
+            border-radius: 4px; 
+            transition: all 0.2s ease; 
+        }
+
+        
+        .myself-click a:hover {
+            background-color: #f5f5f5;
+            color: #42b983;
+        }
+    .main{
+        
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        width: 100%;
+        height: auto;
+        margin-top: 5px;
+        border-radius: 10px;
+        padding-top: 70px;
+    }
+    .title-a, .title-b, .title-c, .title-d, .title-e, .offcial{
+        
+        text-decoration: none;
+        position: fixed;
+        top: 15px;
+        transition: all 0.3s ease;
+        color: #f5f5f5;
+        font-size: 25px;
+        font-weight: bold;
+        font-family: 'Arial Black', Gadget, sans-serif;
+    }
+    .title-a:hover, .title-b:hover, .title-c:hover, .title-d:hover, .title-e:hover, .offcial:hover{
+        color: yellow;
+        transform: scale(1.2);
+    }
+    .offcial{
+        left: 5%;
+    }
+    .title-a{
+        left: 20%;
+    }
+    .title-b{
+        left: 35%;
+    }
+    .title-c{
+        left: 50%;
+    }
+    .title-d{
+        left: 65%;
+    }
+    .title-e{
+        left: 80%;
+    }
+    #main-a, #main-b, #main-c, #main-d, #main-e{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgba(255,255,255,0.8);
+        width: 100%;
+        height: auto;
+    }
+    .harry, .ron, .hermione{
+        transition: all 0.3s ease;
+        width: 400px;
+        height: auto;
+        margin-left: 50px;
+        margin-right: 50px;
+        border-radius: 10px;
+    }
+    .more{
+        transition: all 0.3s ease;
+        width: 5%;
+        background-color: gray;
+        height: 30px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 10px;
+             
+    }
+    .more:hover,.harry:hover, .ron:hover, .hermione:hover{
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .video-group{
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center; 
+       
+    }
+    .video{
+        display: inline-block;
+        transition: all 0.3s ease;
+        width: 10%;
+        height: 100;
+        
+        margin-right: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .video-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        display: block; 
+        border-radius: 10px;
+    }
+    .video:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .about{
+        width: 300px;
+        height: auto;
+        border-radius: 10px;
+        display: block;
+        transition: all 0.3s ease;
+    }
+    .about:hover{
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+</style>
+<body>
+    
+    <!-- 导航栏 -->
+    <div class="title">
+        <!-- 音频 -->
+        <audio src="./musics/Hedwig's theme.mp3" class="audio"></audio>
+    <img src="./pictures/music.jpg" class="click-audio" >
+    <script>
+        document.querySelector('.click-audio').onclick = function(){
+            this.classList.add('rotate');
+            document.querySelector('.audio').play();
+        }       
+    </script>
+    <!-- 头像 -->
+     <div >
+         <img src="./pictures/head.png" class="myself">
+         <div class="myself-click">
+            <a href="https://github.com/firenineice" target="_blank" >我的github主页</a>
+            <a href="https://space.bilibili.com/3494377785657546?spm_id_from=333.1007.0.0" target="_blank" >我的bilibili主页</a>
+            <a href="mailto:918149175@qq.com" target="_blank" >我的邮箱</a>
+            <a href="./pictures/a/a.mp4" target="_blank" >彩蛋
+         </div>
+     </div>
+        
+    <!-- 跳转 -->
+     <a href="https://www.harrypotter.com/" class="offcial" target="_blank">官方网站</a>
+    <a href="#main-a" class="title-a">原著介绍</a>
+    <a href="#main-b" class="title-b">角色介绍</a>
+    <a href="https://weread.qq.com/web/reader/88a322005cba2388ae991a5k115328e02df115f89503b27" class="title-c" target="_blank">原著阅读</a>
+    <a href="#main-d" class="title-d">电影观看</a>
+    <a href="#main-e" class="title-e">相关作品</a>
+    </div>
+
+
+
+
+    <!-- 主体 -->
+    <div class="main">
+        <!-- 原著介绍 -->
+         <div id="main-a">
+            <hr>
+            <div style="font-size: 30px;text-align: left;margin-bottom: 20px;">
+                原著介绍   
+            </div>
+            <div style="font-size: 25px;">
+                 <h1 style="text-align: center;">魔法、成长与永恒之战：<i>《哈利·波特》</i>——一个时代的魔幻史诗</h1>
+                 <p style="text-align: left;text-indent: 2em;">在伦敦一家普通的咖啡馆里，J.K.罗琳在餐巾纸上勾勒出了一个戴眼镜、额头有闪电伤疤的男孩形象。这个简单的草图，最终演变成了一场席卷全球的文化现象，成为无数人共同的文化记忆。《哈利·波特》系列不仅是一套畅销书籍或成功的电影系列，更是一面镜子，映照出我们每个人内心深处的渴望、恐惧与成长。</p>
+            </div>
+            <hr>
+            <p style="text-align: center;font-size: 30px;">魔法宇宙的匠心构筑</p>
+            <div style="display: flex;">
+               
+                <div style="text-align: left;text-indent: 2em;font-size: 25px;">
+                    <p>《哈利·波特》系列的核心魅力，首先在于J.K.罗琳构建了一个无与伦比、细节充盈的平行魔法世界。这个世界的入口，就隐藏在日常生活的缝隙之中——从破釜酒吧身后的对角巷，到国王十字车站的九又四分之三站台，魔法与现实的交界被设计得既隐秘又自然。这种巧妙的连接，让读者在翻开书页的瞬间，便获得了那份“我也可能被选中”的奇妙代入感。</p>
+                    <p>这个世界并非空洞的幻想，它拥有自己的物理规则、经济体系与社会历史。魔杖的忠诚、咒语的原理、魔法生物的习性，乃至《预言家日报》的舆论运作，都构成了一个逻辑自洽的生态系统。霍格沃茨不仅是学校，更是一个微缩社会，四学院的性格设定延续了中世纪的气质，又与主角们的成长选择息息相关。</p>
+                    <p>最终，这个世界成功地将英国乡村的古典气质、哥特式的神秘氛围与校园青春的日常体验熔于一炉。它之所以令人深信不疑并心驰神往，正因它在非凡的魔法之下，包裹着最普遍的情感与最严谨的设定。</p>
+                </div>
+                 <div style="text-align: right;margin-right: 120px;">
+                    <a href="https://www.bilibili.com/bangumi/play/ep280975?theme=movie&spm_id_from=333.337.0.0" target="_blank" style="overflow: hidden;"><img src="./pictures/poster1.jpg" alt="poster" style="width: 300px;height: auto;border-radius: 10px;display: block;"></a>
+                    
+                </div>
+            </div>
+            <hr>
+            <p style="text-align: center;font-size: 30px;">铁三角的成长与史诗叙事</p>
+            <div style="display: flex;">
+                <div style="text-align: left;">
+                    <a href="https://www.bilibili.com/bangumi/play/ep281206?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.episode.0" target="_blank" style="overflow: hidden;"><img src="./pictures/poster2.jpg" alt="poster" style="width: 300px;height: auto;border-radius: 10px;display: block;"></a>
+                </div>
+                <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 50px;">
+                    <p>整个系列以哈利、罗恩与赫敏组成的“铁三角”关系为情感轴心，描绘了一段从懵懂少年到肩负重任的青年的完整成长史诗。他们的友谊是故事最动人的部分，其中充满了互补、争吵、牺牲与无条件的支持。哈利承载着宿命的重压，罗恩在英雄友伴的阴影下寻找自我价值，赫敏则以智慧与原则成为团队的基石与良心。</p>
+                    <p>七部曲的宏大结构，如同精心谱写的交响乐章。从《魔法石》与《密室》较为明快的冒险启程，到《阿兹卡班囚徒》引入阴影与背叛的主题，《火焰杯》成为童年终结的残酷转折。自《凤凰社》始，故事完全进入黑暗的隧道，挣扎、失去与反抗成为主调，直至《死亡圣器》完成最终的牺牲与救赎。</p>
+                    <p>这一成长过程，因众多配角的复杂弧光而更加丰厚。西弗勒斯·斯内普“Always”背后的痴守与悔恨，小天狼星布莱克未能褪去的少年心性与悲剧命运，阿不思·邓布利多从神坛走向人间的复杂与脆弱，共同构建了一片广阔的道德灰色地带。这使得叙事超越了简单的正邪对抗，升华为关于选择、原谅与人性复杂的深刻探讨。</p>
+                </div>
+            </div>
+            <hr>
+            <p style="text-align: center;font-size: 30px;">现实映照与永恒主题</p>  
+            <div style="display: flex;">
+                <div style="text-align: left;text-indent: 2em;font-size: 25px;">
+                    <p>在咒语与魔药的外衣之下，《哈利·波特》探讨的是一系列沉重而永恒的现实命题。魔法社会的“纯血论”及其对“麻瓜出身者”的系统性歧视，直指现实中的种族主义、血统论与阶级壁垒。魔法部的官僚腐败、对媒体的操控以及对危机（如伏地魔回归）的否认，无疑是政治现实的精准映照。</p>
+                    <p>系列的核心哲学，是邓布利多反复强调的：“决定我们成为什么样人的，不是我们的能力，而是我们的选择。”哈利的每一次关键抉择——从选择格兰芬多，到选择回去面对伏地魔——都坚定地诠释了这一理念。他与汤姆·里德尔（伏地魔）的根本区别，并非力量强弱，而在于对生命、爱与牺牲的理解与选择。</p>
+                    <p>此外，故事深刻探讨了死亡、记忆与爱的力量。死亡圣器的传说揭示了人类对消亡的普遍恐惧，而哈利父母的牺牲则证明了“爱”是一种可以留下永恒守护的、最古老的魔法。这些主题让故事拥有了直击人心的重量，使其成为一部适合所有年龄层读者的生命寓言。</p>
+                </div>   
+                <div style="text-align: right;margin-right: 120px;">
+                    <a href="https://www.bilibili.com/bangumi/play/ep281207?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.episode.0" target="_blank" style="overflow: hidden;"><img src="./pictures/poster3.jpg" alt="poster" style="width: 300px;height: auto;border-radius: 10px;display: block;"></a>     
+                </div>
+            </div>
+            <hr>
+            <p style="text-align: center;font-size: 30px;">全球现象与文化遗产</p>
+            <div style="display: flex;">
+                <div style="text-align: left;">
+                    <a href="https://www.bilibili.com/bangumi/play/ss28298?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.series.0" target="_blank" style="overflow: hidden;"><img src="./pictures/poster4.jpg" alt="poster" style="width: 300px;height: auto;border-radius: 10px;display: block;"></a>
+                </div>
+                <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 50px;">
+                    <p>《哈利·波特》早已超越文学范畴，成为21世纪初最具影响力的全球文化现象之一。它彻底改变了出版业的格局，证明了青少年文学能够承载深刻的主题，并吸引全年龄段的读者，引领了全球性的阅读热潮。其成功的电影改编、主题公园、舞台剧及衍生作品，共同构建了一个空前庞大的跨媒体宇宙。</p>
+                    <p>更重要的是，它塑造了一代人的精神底色。系列中关于反抗权威、坚持正义、为弱势群体发声的价值观，被无数读者内化为自身的道德准则。“邓布利多军”成为一种文化符号，其精神被应用于现实的社会运动与公益行动之中。</p>
+                    <p>最终，《哈利·波特》为现代世界提供了一个共同的、充满希望的神话。它给了我们一个可以反复回归的精神家园，并持续传递着这样的信念：在最黑暗的时刻，勇气、友谊与爱的选择，永远是最具威力的魔法。它不再只是一套书，而是一个时代共同的文化记忆与精神遗产。</p>
+                </div>
+            </div>
+            </div>
+            <hr>
+         <div id="main-b">
+            <hr>
+            <div style="font-size: 30px;text-align: left;margin-bottom: 20px;">
+                 角色介绍
+         </div>  
+         <div style="display: flex;">
+            <div style="width: 30%;">
+                <div><a href="https://baike.baidu.com/item/%E5%93%88%E5%88%A9%C2%B7%E6%B3%A2%E7%89%B9/799457" target="_blank"><img src="./pictures/harry.jpg" alt="harry"  class="harry"></a></div>
+                <div>
+                    <p style="text-align: center;font-size: 30px;"">哈利·波特：承载闪电伤疤的“救世之星”</p>
+                    <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 20px;">
+                        他额头上的闪电伤疤，是爱与杀戮共同镌刻的印记，也是连接他与黑暗魔王的残酷纽带。哈利并非天生的英雄，他成长于碗柜，在冷漠与忽视中熬过童年，这造就了他敏感、坚韧且极度渴望归属的性格。他确实拥有非凡的勇气——一种近乎本能的、冲向危险保护他人的冲动，这使他在十一岁就直面过伏地魔。然而，他的旅程远非简单的英雄凯歌。他不断在“救世主”的光环与普通少年的渴望间挣扎，饱受噩梦、愤怒与孤独的折磨。他性格中的“格兰芬多”特质并非毫无杂质，偶尔的鲁莽、固执与对复仇的渴望，让他显得真实而复杂。哈利最伟大的力量，最终并非来自预言或魔法，而是来自他历尽磨难后依然选择去爱、去信任、并为自己所爱的人坦然赴死的决心。他的故事是一个关于承受重压、理解牺牲，并在黑暗中选择光明的灵魂纪事。
+                    </div>
+                </div>
+            </div>
+            <div style="width: 30%;">
+                <div><a href="https://baike.baidu.com/item/%E7%BD%97%E6%81%A9%C2%B7%E9%9F%A6%E6%96%AF%E8%8E%B1/5019332" target="_blank"><img src="./pictures/ron.jpg" alt="ron" class="ron"></a></div>
+                <div>
+                    <p style="text-align: center;font-size: 30px;">罗恩·韦斯莱：红发家族中的忠诚之心</p>
+                    <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 20px;">
+                        作为古老却清贫的韦斯莱家族中最小的儿子之一，罗恩始终生活在优秀的哥哥们和“大难不死的男孩”的阴影下。他穿着二手长袍，拿着磨损的魔杖登场，内心的不安全感与对认可的渴望，构成了他最初成长的核心驱动力。罗恩不是完美的伙伴，他会因嫉妒而爆发，因恐惧而退缩，他的幽默感时常是掩盖不安的面具。然而，正是这些瑕疵，让他成为铁三角中最具人性色彩、最能引起共鸣的一员。他的忠诚经过了最严酷的考验——无论是牺牲自己那盘伟大的巫师棋，还是在极度恐慌后最终回归朋友身边。罗恩的成长，是一个关于在挚友非凡的命运旁，寻找并确立自我价值的故事。他最终证明，真正的勇气并非毫无畏惧，而是在恐惧之后依然选择站在正确的一边；真正的伟大，不在于成为主角，而在于成为那个永远可以依靠的、坚实而温暖的背影。
+                    </div>
+                </div>
+            </div>
+            <div style="width: 30%;">
+                <div><a href="https://baike.baidu.com/item/%E8%B5%AB%E6%95%8F%C2%B7%E6%A0%BC%E5%85%B0%E6%9D%B0/1176329" target="_blank"><img src="./pictures/hermione.jpg" alt="hermione" class="hermione"></a></div>
+                <div>
+                    <p style="text-align: center;font-size: 30px;">赫敏·格兰杰：用书本与信念改变世界的女巫</p>
+                    <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 20px;">
+                        她带着一头蓬松卷发和远超同龄人的知识量走进魔法世界，最初被看作一个“除了书本一无是处”的麻瓜出身者。赫敏的逻辑头脑、惊人的记忆力与对规则的信奉，是她最初始的铠甲与武器。她不仅是知识的储存库，更是将其转化为行动的战略家，从调配复方汤剂到创建“邓布利多军”，她的智慧一次次扭转危局。然而，她最深刻的成长在于超越了书本的智慧，理解了更复杂的人性与道德。她从严守条规到为了更崇高的目标打破规则，从略显教条到懂得友谊与情感的价值。赫敏的灵魂之火，源于对不公的绝对无法容忍。她为家养小精灵争取权益，为“泥巴种”的污名而战，她的博爱之心与激进智慧，使她成为魔法世界真正潜在的革新者。赫敏·格兰杰证明了，最强大的魔法是知识、同理心与为信念挺身而出的无畏勇气的结合。
+                    </div>
+            </div>
+            
+         </div>
+         <div class="more">
+                <a href="https://harrypotter.fandom.com/zh/wiki/Category:%E9%9C%8D%E6%A0%BC%E6%B2%83%E8%8C%A8%E5%AD%A6%E7%94%9F" style="font-weight: bold;text-decoration: none;color: white;" target="_blank">更多</a>
+            </div>
+         </div> 
+        </div>
+        <hr>
+        <div id="main-d">
+            <hr>
+            <div style="font-size: 30px;text-align: left;margin-bottom: 20px;">
+                电影观看   
+            </div>
+            <div class="video-group">
+                
+                    <a href="https://www.bilibili.com/bangumi/play/ss28281?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.series.0" target="_blank" class="video"><img src="./pictures/poster1.jpg" alt="poster" class="video-img"></a>
+                
+                
+                    <a href="https://www.bilibili.com/bangumi/play/ss28296?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.series.0" target="_blank" class="video"><img src="./pictures/poster2.jpg" alt="poster"  class="video-img"></a>
+                
+                
+                    <a href="https://www.bilibili.com/bangumi/play/ss28297?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.series.0" target="_blank" class="video"><img src="./pictures/poster3.jpg" alt="poster" class="video-img"></a>
+                
+                
+                    <a href="https://www.bilibili.com/bangumi/play/ss28298?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.series.0" target="_blank" class="video"><img src="./pictures/poster4.jpg" alt="poster" class="video-img"></a>
+               
+                
+                    <a href="https://www.bilibili.com/bangumi/play/ss28299?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.series.0" target="_blank" class="video"><img src="./pictures/poster5.jpg" alt="poster" class="video-img"></a>
+                
+                
+                    <a href="https://www.bilibili.com/bangumi/play/ep281210?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.episode.0" target="_blank" class="video"><img src="./pictures/poster6.jpg" alt="poster" class="video-img"></a>
+                
+                
+                    <a href="https://www.bilibili.com/bangumi/play/ep281211?theme=movie&spm_id_from=333.337.0.0&from_spmid=666.25.episode.0" target="_blank" class="video"><img src="./pictures/poster7.jpg" alt="poster" class="video-img"></a>
+                
+
+            </div>
+        </div>
+        <hr>
+        <div id="main-e" style="padding: 20px;">
+             <hr>
+            <div style="font-size: 30px;text-align: left;margin-bottom: 20px;">
+                相关作品  
+            </div>
+            <p style="text-align: center;font-size: 30px;">霍格沃茨之遗-Hogwarts Legacy</p>
+            <div style="display: flex;">
+                <div style="text-align: left;">
+                    <a href="https://store.steampowered.com/app/990080/_/" target="_blank" style="overflow: hidden;"><img src="./pictures/Hogwarts Legacy.jpg" alt="poster" class="about"></a>
+                </div>
+                <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 50px;">
+                    <p>《霍格沃茨之遗》是一款沉浸式开放世界动作角色扮演游戏。这回，你将在魔法世界中扮演“你自己”，亲手书写属于自己的传奇。</p>
+                    
+                </div>
+            </div>
+            <hr>
+            <p style="text-align: center;font-size: 30px;">神奇动物在哪里-Fantastic Beasts and Where to Find Them</p>
+            <div style="display: flex;">
+                <div style="text-align: left;">
+                    <a href="https://www.bilibili.com/bangumi/play/ep334869?theme=movie&spm_id_from=333.337.0.0" target="_blank" style="overflow: hidden;"><img src="./pictures/Fantastic Beasts and Where to Find Them.jpg" alt="poster" class="about"></a>
+                </div>
+                <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 50px;">
+                    <p>故事始于1926年的纽约，魔法动物学家纽特·斯卡曼德带着一箱珍稀神奇动物抵达，但一个意外导致几只动物逃出箱子，在危机四伏的城市中引发了混乱。为了找回动物，内向的纽特不得不与想要重回职位的女巫蒂娜、蒂娜能读心的妹妹奎妮，以及偶然卷入的麻瓜（不会魔法的人）面包师雅各布组成了一个小团队。在看似简单的搜救过程中，他们逐渐卷入了一个更危险的阴谋，并被迫与黑巫师格林德沃的势力展开较量，其核心冲突反映了人类对未知力量的恐惧。</p>
+                    
+                </div>
+            </div>
+            <hr>
+            <p style="text-align: center;font-size: 30px;">哈利波特魔法觉醒-Harry Potter Magic Awakened</p>
+            <div style="display: flex;">
+                <div style="text-align: left;">
+                    <a href="https://www.harrypottermagicawakened.com/cn/" target="_blank" style="overflow: hidden;"><img src="./pictures/Harry Potter Magica Awakened.jpg" alt="poster" class="about"></a>
+                </div>
+                <div style="text-align: left;text-indent: 2em;font-size: 25px;margin-left: 50px;">
+                    <p>《哈利波特：魔法觉醒》是一款由《哈利·波特》原著官方授权、网易开发的卡牌手游。游戏设定在原著大战十年后，玩家作为新生入学霍格沃茨，通过组合魔法卡牌进行实时对战，并体验丰富的魔法校园生活。</p>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <hr>
+        <div>
+            <p style="text-align: center;color: white;">© 2026 哈利波特介绍网站. By firenineice.</p>
+        </div>
+
+    </div>
+</html>
